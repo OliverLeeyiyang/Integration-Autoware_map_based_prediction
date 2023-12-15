@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="param_path" default="$(find-pkg-share tum_prediction)/config/map_and_node_params.yaml"/>
+  <arg name="map_path" default="$(find-pkg-share tum_prediction)/sample_map"/>
+  <arg name="lanelet2_map_file" default="lanelet2_map.osm"/>
+  <arg name="map_config_file" default="map_config.yaml"/>
+
+  <node pkg="tum_prediction" exec="parallel_map_based_prediction_node" name="parallel_map_based_prediction_node" output="screen">
+    <param name="Map_Path" value="$(var map_path)/$(var lanelet2_map_file)" type="str"/>
+    <param name="Map_Config" value="$(var map_path)/$(var map_config_file)"/>
+    <param from="$(var param_path)"/>
+  </node>
+
+  <!--<node pkg="tum_prediction" exec="visual_node" name="visual_node" output="screen"/>-->
+</launch>
