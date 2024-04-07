@@ -1,0 +1,3 @@
+# Recommended to use a virtual environment
+
+pip3 install lanelet2
